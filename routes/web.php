@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BooksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// new route => new controller method => new view 
+
+//all books
+Route::get('/',[BooksController::class ,'index']);
+
+//show add book
+Route::get('/books/create',[BooksController::class ,'create']);
+
+//store books data
+
+Route::post('/books',[BooksController::class ,'store']);
+
+
+//show single book
+
+Route::get('/books/{book}',[BooksController::class ,'show']);
